@@ -8,29 +8,30 @@ nr_letters= int(input("How many letters would you like in your password? "))
 nr_symbols = int(input(f"How many symbols would you like? "))
 nr_numbers = int(input(f"How many numbers would you like? "))
 
+# create a null list for store the randomized number
 list_letters = []
 list_symbols = []
 list_numbers = []
 
 for i in range(0, nr_letters):
-    random_letters = random.randint(0, len(letters) - 1)
-    value = letters[random_letters]
-    list_letters.append(value)
+    random_letters = random.randint(0, len(letters) - 1) 
+    value = letters[random_letters] 
+    list_letters.append(value) # add the the generated letter tp the list_letters
 for i in range(0, nr_symbols):
     random_symbols = random.randint(0, len(symbols) - 1)
     value = symbols[random_symbols]
-    list_symbols.append(value)
+    list_symbols.append(value) # add the the generated symbol tp the list_symbols
 for i in range(0, nr_numbers):
     random_numbers = random.randint(0, len(numbers) - 1)
     value = numbers[random_numbers]
-    list_numbers.append(value)
+    list_numbers.append(value) # add the the generated number tp the list_numbers
 
 password = list_letters + list_symbols + list_numbers
 for i in range(0, len(password)):
-    print(password[i], end="")
+    print(password[i], end="") # password generate chronologically letters, symbols then numbers
     
 print("\n\n")
 
 random_shuffled_password = random.sample(password, len(password))
 for i in range(0, len(password)):
-    print(random_shuffled_password[i], end="")
+    print(random_shuffled_password[i], end="")  # password generate randomly order
