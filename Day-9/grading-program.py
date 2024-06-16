@@ -14,4 +14,4 @@ for i in student_scores:
         grade = "Acceptable"
     else:
         grade = "Fails"
-    print(f"{i} => {grade}")
+    print(f"{i} => {grade}") 
