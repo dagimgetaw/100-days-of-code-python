@@ -1,41 +1,43 @@
 import random
-import sys
+import os
 import hangman_art
 import hangman_words
 
-word_list = hangman_words.word_list
-random_number = random.randint(0, len(word_list) - 1)
-guessed_word = word_list[random_number]
-length = len(guessed_word)
+def clear():
+    os.system('cls')
+clear()
 
-print(guessed_word)
 print(hangman_art.logo)
+end_of_game = False
 
-blank = []
+chosen_word = random.choice(hangman_words.word_list)
+word_length = len(chosen_word)
 
+lives = 6
 
-for i in range(length):
-    blank += "_"
-    
-count = 0
-life = len(hangman_art.stages) - 1
+display = []
+for _ in range(word_length):
+    display += "_"
 
-while  life >= 0:
-    guess = input("Guess the letter: ")
-    guess = guess.lower()
-    for position in range(length):
-        if guess == guessed_word[position]:
-            blank[position] = guess
-            print(f"{' '.join(blank)}")
-            print(hangman_art.stages[life])
-            if count == len(blank) - 1:
-                print("YOu Won")
-                sys.exit() # Terminate the entire program
-            count += 1
+while not end_of_game:
+    guess = input("Guess a letter: ").lower()
 
-    else:
-        print(f"{' '.join(blank)}")
-        print(hangman_art.stages[life])
-        life -= 1
-        if life == -1:
-            print("You Lose")
+    for position in range(word_length):
+        letter = chosen_word[position]
+        if letter == guess:
+            display[position] = letter
+
+    if guess not in chosen_word:
+        lives -= 1
+        if lives == 0:
+            end_of_game = True
+            print("You lose.")
+            print(f"The word is {chosen_word}")
+
+    print(f"{' '.join(display)}")
+
+    if "_" not in display:
+        end_of_game = True
+        print("You win.")
+
+    print(hangman_art.stages[lives])
