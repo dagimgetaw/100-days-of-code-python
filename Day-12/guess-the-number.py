@@ -14,7 +14,7 @@ def guess_the_number():
     difficulty = input("Choose a difficulty. Type 'easy' or 'hard': ")
     
     global number 
-    number = random.randint(1, 101)
+    number = random.randint(1, 100)
     
     if difficulty == "easy":
         easy_mode()
