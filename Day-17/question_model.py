@@ -6,4 +6,3 @@ class Question:
 
 
 new_q = Question("Text", "Answer")
-
