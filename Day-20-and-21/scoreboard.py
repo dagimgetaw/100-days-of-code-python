@@ -12,3 +12,8 @@ class Scoreboard(Turtle):
         self.ht()
         self.write(f"Score = {score}", False, align="center", font=("Arial", 16, "normal"))
 
+    def game_over(self):
+        self.goto(0, 0)
+        self.write("Game Over", False, align="center", font=("Arial", 16, "normal"))
+
+
