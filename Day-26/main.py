@@ -18,3 +18,17 @@ stud_score = {student: random.randint(1, 100) for student in names}
 print(stud_score)
 passed_stud = {student: score for (student, score) in stud_score.items() if score > 60}
 print(passed_stud)
+
+import pandas as pd
+
+stud_dict = {
+    "student": ["Angela", "James", "Lily"],
+    "score": [56, 76, 98]
+}
+
+stud_data_frame = pd.DataFrame(stud_dict)
+print(stud_data_frame)
+
+for (index, row) in stud_data_frame.iterrows():
+    print(row.student)
+
